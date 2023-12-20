@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div
+        style="height: 20dvh; display:  flex; align-items: center; justify-content: center; background: rgb(255, 155, 79);">
+        <label for="number" style="margin-right: 10px;">Sayı gir:</label>
+        <input type="text" name="number" id="number">
+        <button style="margin-left: 10px;" type="button" onclick=showAlert()>Gönder</button>
+    </div>
+
+    <div style="margin-top: 50px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <div style="display: flex;">
+            <div style="display: flex; flex-direction: column; margin-right: 20px;">
+                <label for="number1">Sayı 1</label>
+                <input type="text" name="number1" id="number1">
+            </div>
+            <div style="display: flex; flex-direction: column;">
+                <label for="number2">Sayı 1</label>
+                <input type="text" name="number2" id="number2">
+            </div>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <div>
+                <button style="width: 60px; height: 30px; margin-right: 20px;" id="multiply" onclick=doMath(this.id)>
+                    Çarp
+                </button>
+                <button style="width: 60px; height: 30px;" id="divide" onclick=doMath(this.id)>
+                    Böl
+                </button>
+            </div>
+            <div style="margin-top: 10px;">
+                <button style="width: 60px; height: 30px; margin-right: 20px;" id="add" onclick=doMath(this.id)>
+                    Topla
+                </button>
+                <button style="width: 60px; height: 30px;" id="subtract" onclick=doMath(this.id)>
+                    Çıkarma
+                </button>
+            </div>
+
+        </div>
+        <div id="result" style="font-size: 20pt; margin-top: 20px;">
+        </div>
+    </div>
+
+</body>
+
+<script>
+
+
+    function showAlert() {
+        const number = document.getElementById("number");
+        alert(isNaN(number.value) ? "Bir sayı değil" : number.value)
+    }
+
+    function doMath(e) {
+        let number1 = document.getElementById("number1").value
+        let number2 = document.getElementById("number2").value
+        let resultDiv = document.getElementById("result")
+        let result;
+        if (isNaN(number1) || isNaN(number2)) {
+            result = "Yukarıdakilerden biri sayı değil"
+        } else {
+
+            switch (e) {
+                case "multiply":
+                    result = number1 * number2;
+                    break
+                case "divide":
+                    result = number1 / number2;
+                    break
+                case "add":
+                    result = number1 + number2;
+                    break
+                case "subtract":
+                    result = number1 - number2;
+                    break
+            }
+        }
+        console.log(result)
+        resultDiv.innerText = result
+    }
+
+
+</script>
+
+</html>
